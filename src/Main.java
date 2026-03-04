@@ -1,3 +1,6 @@
+import builder.User;
+import decorator.*;
+
 public class Main {
     public static void main(String[] args) {
     User user = new User.Builder("mylogin")
@@ -9,5 +12,12 @@ public class Main {
             .build();
 
     System.out.println(user);
+
+
+        Drink coffee =  new RomDecorator(new Coffee());
+        Drink tea = new MilkDecorator(new SugarDecorator(new Tea()));
+
+        System.out.println(coffee.getDescription() + " " + coffee.getPrice());
+        System.out.println(tea.getDescription() + " " + tea.getPrice());
     }
 }

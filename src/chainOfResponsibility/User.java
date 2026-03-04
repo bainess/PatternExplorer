@@ -1,3 +1,5 @@
+package chainOfResponsibility;
+
 public class User {
     private String name;
     private String surname;
@@ -5,8 +7,9 @@ public class User {
     private String email;
     private String login;
     private String password;
+    private AccessLevel accessLevel = AccessLevel.SHOP;
 
-    private User(Builder builder) {
+    protected User(Builder<?> builder) {
         this.name = builder.name;
         this.surname = builder.surname;
         this.age = builder.age;
@@ -15,7 +18,7 @@ public class User {
         this.password = builder.password;
     }
 
-    public static class Builder {
+    public static class Builder<T extends Builder<T>> {
         private String login;
         private String name;
         private String surname;
