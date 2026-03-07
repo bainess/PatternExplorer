@@ -1,5 +1,7 @@
 package builder;
 
+import proxy.Role;
+
 public class User {
     private String name;
     private String surname;
@@ -7,6 +9,7 @@ public class User {
     private String email;
     private String login;
     private String password;
+    private Role role;
 
     protected User(Builder builder) {
         this.name = builder.name;
@@ -15,6 +18,7 @@ public class User {
         this.email = builder.email;
         this.login = builder.login;
         this.password = builder.password;
+        this.role = builder.role;
     }
 
     public static class Builder {
@@ -24,6 +28,7 @@ public class User {
         private int age;
         private String email;
         private String password;
+        private Role role;
 
         public Builder(String login) {
             this.login = login;
@@ -54,9 +59,26 @@ public class User {
             return this;
         }
 
+        public Builder role(Role role) {
+            this.role = role;
+            return this;
+        }
+
         public User build() {
             return new User(this);
         }
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public Role getRole() {
+        return role;
     }
 
     @Override
