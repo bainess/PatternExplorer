@@ -1,5 +1,7 @@
 package adapter;
 
+import chainOfResponsibility.Payment;
+
 public interface PaymentProcessor {
-    void pay(String typeOfPayment, double amount);
+    void pay(Payment payment);
 }

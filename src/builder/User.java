@@ -1,6 +1,9 @@
 package builder;
 
+import chainOfResponsibility.Account;
 import proxy.Role;
+
+import java.lang.reflect.AccessFlag;
 
 public class User {
     private String name;
@@ -10,6 +13,7 @@ public class User {
     private String login;
     private String password;
     private Role role;
+    private String location;
 
     protected User(Builder builder) {
         this.name = builder.name;
@@ -19,6 +23,7 @@ public class User {
         this.login = builder.login;
         this.password = builder.password;
         this.role = builder.role;
+        this.location = builder.location;
     }
 
     public static class Builder {
@@ -29,6 +34,7 @@ public class User {
         private String email;
         private String password;
         private Role role;
+        private String location;
 
         public Builder(String login) {
             this.login = login;
@@ -64,6 +70,11 @@ public class User {
             return this;
         }
 
+        public Builder location(String location) {
+            this.location = location;
+            return this;
+        }
+
         public User build() {
             return new User(this);
         }
@@ -81,9 +92,14 @@ public class User {
         return role;
     }
 
+    public String getLocation() {
+        return location;
+    }
+
     @Override
     public String toString() {
         return "Name: " + name + ".\nSurname: " + surname + ".\nLogin: " +
-                login + ".\nAge: " + age + ".\nEmail: " + email + ".\nPassword: " + password;
+                login + ".\nAge: " + age + ".\nEmail: " + email + ".\nPassword: " + password +
+                ".\n Location: " + location;
     }
 }
