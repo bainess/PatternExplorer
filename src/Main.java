@@ -4,6 +4,7 @@ import adapter.PaymentProcessor;
 import builder.User;
 import decorator.*;
 import proxy.*;
+import strategy.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -41,6 +42,16 @@ public class Main {
 
         service.getFilm(1L);
         user.setRole(Role.ADMIN);
-        System.out.println("user " + user.getLogin() + " get film:" + service.getFilm(1L).getTitle());
+        System.out.println("user " + user.getLogin() + " get film: " + service.getFilm(1L).getTitle());
+        System.out.println();
+
+        //strategy
+        Parcel parcel = new Parcel(123L, "New City, Old street, 76");
+        DeliveryStrategy deliveryCourier = new Courier("John Doe");
+        DeliveryStrategy delieveryPost = new Post(486923);
+        DeliveryStrategy deliveryPickUp = new PickUp("hks862wcD");
+        System.out.println(deliveryPickUp.deliver(parcel));
+        System.out.println(deliveryCourier.deliver(parcel));
+        System.out.println(delieveryPost.deliver(parcel));
     }
 }
