@@ -1,9 +1,6 @@
 package builder;
 
-import chainOfResponsibility.Account;
 import proxy.Role;
-
-import java.lang.reflect.AccessFlag;
 
 public class User {
     private String name;

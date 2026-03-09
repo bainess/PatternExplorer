@@ -1,6 +1,5 @@
 package chainOfResponsibility;
 
-import builder.User;
 
 public class LocationCheck extends CheckPayment {
     private Account account;
